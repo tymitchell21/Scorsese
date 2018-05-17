@@ -11,16 +11,30 @@
 <body>
     <header id="formSubmit">
         <h1 id="font">Scorsese Films</h1>
-        
-        <form id="filmForm">
-            <p>
-                <label for="title">Title of film:</label><br>
-                <input id="text" name="title" autofocus><br>
-            </p>
-    
-            <button type="submit">Add Film</button><br><br>
-        </form>
     </header>
+    
+    <main id="flickForm">
+        <form id="filmForm">
+            <div class="input-group">
+                <label class="input-group-label" for="title">Title of film:</label><br>
+                <input 
+                    class="input-group-field"
+                    id="text"
+                    name="title"
+                    autofocus
+                    required
+                    placeholder="Name a film"
+                ><br>
+                <div class="input-group-button">
+                    <button class="button" type="submit">
+                        Add Film
+                    </button><br><br>
+                </div>
+            </div>
+    
+        </form>
+    </main>
+
     <div id="newContent">
 
         <ul id="filmList"></ul>
