@@ -27,7 +27,7 @@
                 ><br>
                 <div class="input-group-button">
                     <button
-                        class="button"
+                        class="button warning"
                         type="submit">
                         Add Film
                     </button><br><br>
@@ -39,7 +39,15 @@
 
     <div id="newContent">
 
-        <ul id="filmList"></ul>
+        <ul id="filmList" class="no-bullet">
+            <li class="flick grid-x align-middle">
+                <span class="flickName cell auto">Jupiter Ascending</span>
+                <span class="actions cell shrink">
+                    <button class="button success">fav</button>
+                    <button class="button alert">del</button>
+                </span>
+            </li>
+        </ul>
 
     </div>
 
