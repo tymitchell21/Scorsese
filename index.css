@@ -13,7 +13,8 @@ main {
     margin: 1rem auto;
 }
 
-.actions .button {
+.actions .button,
+.actions.button-group {
     margin-bottom: 0rem;
 }
 

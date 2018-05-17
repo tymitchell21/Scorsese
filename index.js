@@ -10,6 +10,7 @@ const app = {
          .addEventListener('submit', (ev) => {
              ev.preventDefault()
              this.handleSubmit(ev)
+             ev.target.title.focus()
          })
     },
 
