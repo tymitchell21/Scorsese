@@ -26,10 +26,10 @@ const app = {
             name: f.title.value
         }
         
-        this.films.push(flick)
+        this.films.unshift(flick)
 
         const item = this.renderListItem(flick)
-        this.list.appendChild(item)
+        this.list.insertBefore(item, this.list.firstChild)
 
         f.reset()
     },
