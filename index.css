@@ -20,3 +20,7 @@ main {
 .flickName {
     margin: 0 0.75rem;
 }
+
+.template {
+    display: none;
+}
