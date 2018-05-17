@@ -21,9 +21,17 @@ const app = {
         item
             .querySelector('.flickName')
             .textContent = flick.name
+        item.querySelector('.del').addEventListener('click',(ev) => {
+            const index = [...item.parentNode.childNodes].indexOf(item)
+            item.parentNode.removeChild(item)
+            this.films.splice(index,1)
+            console.log(this.films)
+        })
 
         return item
     },
+
+    
 
     handleSubmit(ev) {
         const f = ev.target
@@ -36,6 +44,8 @@ const app = {
 
         const item = this.renderListItem(flick)
         this.list.insertBefore(item, this.list.firstChild)
+
+        console.log(this.films)
 
         f.reset()
     },
