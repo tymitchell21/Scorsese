@@ -1,16 +1,11 @@
 const form = document.querySelector('#filmForm')
+const films = []
 
-const handleSubmit = function(ev) {
+form.addEventListener('submit', (ev)=>{
     ev.preventDefault()
+    filmName = ev.target.title.value
 
-    const f = ev.target
-    const films = {
-        userName: f.title.value,
-        age: f.actor.value,
-        favoriteColor: f.year.value,
-    }
+    films.push(filmName)
 
     ev.target.reset()
-}
-
-form.addEventListener('submit', handleSubmit)
+})
