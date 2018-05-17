@@ -7,5 +7,13 @@ form.addEventListener('submit', (ev)=>{
 
     films.push(filmName)
 
+    const filmList = document.querySelector('#filmList')
+
+    const film = document.createElement('li')
+    film.textContent = filmName
+
+    filmList.appendChild(film)
+    createDeleteButton(filmList)
+
     ev.target.reset()
 })
