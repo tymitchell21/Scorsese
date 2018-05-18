@@ -38,7 +38,8 @@ const app = {
         const f = ev.target
         const flick = {
             id: ++this.max,
-            name: f.title.value
+            name: f.title.value,
+            fav: false
         }
         
         this.films.unshift(flick)
