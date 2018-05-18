@@ -1,6 +1,9 @@
+body {
+    background-image: url("binding_dark_@2X.png");
+}
 header {
     width: 80%;
-    height: 400px;
+    height: 300px;
     margin: 1rem auto;
     text-align: center;
     background-image: url("goodfellas.jpg");
@@ -10,10 +13,9 @@ header {
     color: white;
 }
 
-header h1 {
-}
-
 main {
+    color: grey;
+    text-align: center;
     width: 80%;
     margin: 1rem auto;
     max-width: 800px;
@@ -34,10 +36,18 @@ main {
     margin-bottom: 0rem;
 }
 
+.scorsese {
+    margin-right: 10px;
+}
+
 .flickName {
     margin: 0 0.75rem;
 }
 
 .template {
     display: none;
+}
+ 
+#filmList {
+    background-color: grey;
 }

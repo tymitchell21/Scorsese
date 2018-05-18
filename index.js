@@ -26,9 +26,19 @@ const app = {
             item.parentNode.removeChild(item)
             this.films.splice(index,1)
         })
+
         item.querySelector('.fav').addEventListener('click',() => {
-            item.style.border = '1px solid green';
-            item.querySelector('.scorsese').style.display = 'block'
+            const index = [...item.parentNode.childNodes].indexOf(item)
+            if (item.querySelector('.scorsese').style.display === 'none'){
+                item.style.border = '1px solid green';
+                item.querySelector('.scorsese').style.display = 'block'
+                this.films[index].fav = true                        
+            } else {
+                item.style.border = '1px solid black';
+                item.querySelector('.scorsese').style.display = 'none'
+                this.films[index].fav = false
+            }
+
         })
 
         return item
