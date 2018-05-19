@@ -28,8 +28,10 @@ const app = {
         })
 
         item.querySelector('.fav').addEventListener('click',() => {
+            
             const index = [...item.parentNode.childNodes].indexOf(item)
-            if (item.querySelector('.scorsese').style.display === 'none'){
+
+            if (this.films[index].fav === false) {
                 item.style.border = '1px solid green';
                 item.querySelector('.scorsese').style.display = 'block'
                 this.films[index].fav = true                        
