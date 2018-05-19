@@ -43,6 +43,10 @@ const app = {
 
         })
 
+        // item.querySelector('.up').addEventListener('click'),() => {
+
+        // }
+
         return item
     },
 
