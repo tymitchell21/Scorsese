@@ -47,6 +47,10 @@ const app = {
             this.swapFilms(item, item.previousSibling)
         })
 
+        item.querySelector('.down').addEventListener('click',() => {
+            this.swapFilms(item.nextSibling, item)
+        })
+
         return item
     },
 
