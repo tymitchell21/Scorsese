@@ -1,14 +1,12 @@
-h1 {
-    color: grey;
-    text-align: center;
-}
+
 body {
     background-image: url("binding_dark_@2X.png");
 }
 header {
     width: 80%;
     height: 400px;
-    margin: 1rem auto;
+    margin: 0rem auto;
+    margin-top: 2rem;
     text-align: center;
     background-image: url("goodFellasFramed.png");
     background-repeat: no-repeat;
@@ -23,7 +21,15 @@ main {
     text-align: center;
     width: 80%;
     margin: 1rem auto;
+    margin-top: 0rem;
     max-width: 800px;
+}
+
+main h1 {
+    color: grey;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 0rem;
 }
 
 #newContent {
