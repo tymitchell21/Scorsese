@@ -28,7 +28,7 @@ const app = {
         })
 
         item.querySelector('.fav').addEventListener('click',() => {
-            
+
             const index = [...item.parentNode.childNodes].indexOf(item)
 
             if (this.films[index].fav === false) {
@@ -58,6 +58,8 @@ const app = {
 
         const item = this.renderListItem(flick)
         this.list.insertBefore(item, this.list.firstChild)
+
+        item.scrollIntoView()
 
         f.reset()
     },
