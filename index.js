@@ -58,11 +58,18 @@ const app = {
         const index1 = [...item1.parentNode.childNodes].indexOf(item1)
         const index2 = [...item2.parentNode.childNodes].indexOf(item2)
 
+        item1.querySelector('.up').disabled = false
+        item2.querySelector('.up').disabled = false
+
         item1.parentNode.insertBefore(item1, item2);
 
         var temp = this.films[index1]
         this.films[index1] = this.films[index2]
         this.films[index2] = temp
+
+        if(index2 === 0) {
+            item1.querySelector('.up').disabled = true
+        }
 
     },
 
@@ -78,6 +85,12 @@ const app = {
 
         const item = this.renderListItem(flick)
         this.list.insertBefore(item, this.list.firstChild)
+
+        item.querySelector('.up').disabled = true
+
+        if(this.films.length > 1) {
+            item.nextSibling.querySelector('.up').disabled = false
+        }
 
         item.scrollIntoView()
 
