@@ -43,11 +43,23 @@ const app = {
 
         })
 
-        // item.querySelector('.up').addEventListener('click'),() => {
-
-        // }
+        item.querySelector('.up').addEventListener('click',() => {
+            this.swapFilms(item, item.previousSibling)
+        })
 
         return item
+    },
+
+    swapFilms(item1, item2) {
+        const index1 = [...item1.parentNode.childNodes].indexOf(item1)
+        const index2 = [...item2.parentNode.childNodes].indexOf(item2)
+
+        item1.parentNode.insertBefore(item1, item2);
+
+        var temp = this.films[index1]
+        this.films[index1] = this.films[index2]
+        this.films[index2] = temp
+
     },
 
     handleSubmit(ev) {
