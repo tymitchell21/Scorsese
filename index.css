@@ -62,3 +62,8 @@ main h1 {
 #filmList {
     background-color: grey;
 }
+
+.flick {
+    transition: opacity 250ms linear;
+}
+
