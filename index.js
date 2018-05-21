@@ -31,6 +31,25 @@ class App {
             this.list.lastElementChild.querySelector('.down').disabled = true
         }
     }
+
+    favFlick(item, flick, ev) {
+        const index = [...item.parentNode.childNodes].indexOf(item)
+ 
+        //If the fav is off when the button is clicked, it is changed.  Else, it is changed back to normal
+        if (this.films[index].fav === false) {
+            //This puts a green border around the favorited list item
+            item.style.border = '1px solid green'
+            //This shows the scorsese character
+            item.querySelector('.scorsese').style.display = 'block'
+            //This changes the films' fav property to true
+            this.films[index].fav = true
+                
+        } else {
+            item.style.border = '1px solid black';
+            item.querySelector('.scorsese').style.display = 'none'
+            this.films[index].fav = false
+        }
+    }
  
     //This function creates a new film list item
     renderListItem(flick) {
@@ -55,26 +74,12 @@ class App {
             )
 
         //This adds an event lisener to the fav button
-        item.querySelector('.fav.button').addEventListener('click',() => {
-
-            const index = [...item.parentNode.childNodes].indexOf(item)
- 
-            //If the fav is off when the button is clicked, it is changed.  Else, it is changed back to normal
-            if (this.films[index].fav === false) {
-                //This puts a green border around the favorited list item
-                item.style.border = '1px solid green'
-                //This shows the scorsese character
-                item.querySelector('.scorsese').style.display = 'block'
-                //This changes the films' fav property to true
-                this.films[index].fav = true
-                   
-            } else {
-                item.style.border = '1px solid black';
-                item.querySelector('.scorsese').style.display = 'none'
-                this.films[index].fav = false
-            }
-
-        })
+        item
+            .querySelector('.fav.button')
+            .addEventListener(
+                'click',
+                this.favFlick.bind(this, item, flick)
+            )
 
         //This adds an event listener to the up button
         item.querySelector('.up').addEventListener('click',() => {
