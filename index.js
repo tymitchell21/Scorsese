@@ -18,6 +18,18 @@ const app = {
          })
     },
 
+    removeFlick(item, ev) {
+        //It removes it from the DOM and the films array
+        // const index = [...item.parentNode.childNodes].indexOf(item)
+        // item.parentNode.removeChild(item)
+        // this.films.splice(index,1)
+
+        item.remove()
+
+        //This makes sure that as a list item is deleted, the new bottom item's down button is disabled
+        this.list.lastElementChild.querySelector('.down').disabled = true
+    },
+ 
     //This function creates a new film list item
     renderListItem(flick) {
 
@@ -33,18 +45,22 @@ const app = {
             .textContent = flick.name
 
         //This adds an event listener to the delete button on the new clone
-        item.querySelector('.del').addEventListener('click',() => {
-            //It removes it from the DOM and the films array
-            const index = [...item.parentNode.childNodes].indexOf(item)
-            item.parentNode.removeChild(item)
-            this.films.splice(index,1)
+        item
+            .querySelector('.del.button')
+            .addEventListener(
+                'click',
+                this.removeFlick.bind(this, item)) //=> {
+            // //It removes it from the DOM and the films array
+            // const index = [...item.parentNode.childNodes].indexOf(item)
+            // item.parentNode.removeChild(item)
+            // this.films.splice(index,1)
 
-            //This makes sure that as a list item is deleted, the new bottom item's down button is disabled
-            this.list.lastElementChild.querySelector('.down').disabled = true
-        })
+            // //This makes sure that as a list item is deleted, the new bottom item's down button is disabled
+            // this.list.lastElementChild.querySelector('.down').disabled = true
+        //})
 
         //This adds an event lisener to the fav button
-        item.querySelector('.fav').addEventListener('click',() => {
+        item.querySelector('.fav.button').addEventListener('click',() => {
 
             const index = [...item.parentNode.childNodes].indexOf(item)
  
@@ -56,7 +72,7 @@ const app = {
                 item.querySelector('.scorsese').style.display = 'block'
                 //This changes the films' fav property to true
                 this.films[index].fav = true
-                
+                   
             } else {
                 item.style.border = '1px solid black';
                 item.querySelector('.scorsese').style.display = 'none'
