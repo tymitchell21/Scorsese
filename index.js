@@ -1,5 +1,5 @@
-const app = {
-    init(selectors) {
+class App {
+    constructor(selectors) {
         //Declares my variables
         this.films = []
         this.max = 0
@@ -16,7 +16,7 @@ const app = {
              this.handleSubmit(ev)
              ev.target.title.focus()
          })
-    },
+    }
 
     removeFlick(item, flick, ev) {
         //It removes it from the DOM
@@ -30,7 +30,7 @@ const app = {
         if(this.films.length > 0) {
             this.list.lastElementChild.querySelector('.down').disabled = true
         }
-    },
+    }
  
     //This function creates a new film list item
     renderListItem(flick) {
@@ -52,15 +52,7 @@ const app = {
             .addEventListener(
                 'click',
                 this.removeFlick.bind(this, item, flick)
-            ) //=> {
-            // //It removes it from the DOM and the films array
-            // const index = [...item.parentNode.childNodes].indexOf(item)
-            // item.parentNode.removeChild(item)
-            // this.films.splice(index,1)
-
-            // //This makes sure that as a list item is deleted, the new bottom item's down button is disabled
-            // this.list.lastElementChild.querySelector('.down').disabled = true
-        //})
+            )
 
         //This adds an event lisener to the fav button
         item.querySelector('.fav.button').addEventListener('click',() => {
@@ -110,7 +102,7 @@ const app = {
 
         //Returns newly created item (clone of template)
         return item
-    },
+    }
 
     //This takes two film items, and swaps them
     swapFilms(item1, item2) {
@@ -137,7 +129,7 @@ const app = {
             item1.querySelector('.up').disabled = true
         }
 
-    },
+    }
 
     //This function is executed when submit is clicked
     handleSubmit(ev) {
@@ -176,10 +168,10 @@ const app = {
 
         //This resets the form inputs to default values
         f.reset()
-    },
+    }
  }
  
-app.init({
+const app = new App({
     formSelector: '#flickForm',
     listSelector: '#filmList',
     templateSelector: '.flick.template',
