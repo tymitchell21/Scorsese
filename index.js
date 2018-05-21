@@ -18,6 +18,7 @@ class App {
          })
     }
 
+    //Function to remove flick when delete button is clicked
     removeFlick(item, flick, ev) {
         //It removes it from the DOM
         item.remove()
@@ -32,8 +33,9 @@ class App {
         }
     }
 
+    //function that favorites flick when fav button is pressed
     favFlick(item, flick, ev) {
-        const index = [...item.parentNode.childNodes].indexOf(item)
+        const index = this.films.indexOf(flick)
  
         //If the fav is off when the button is clicked, it is changed.  Else, it is changed back to normal
         if (this.films[index].fav === false) {
@@ -50,6 +52,39 @@ class App {
             this.films[index].fav = false
         }
     }
+
+    //function that allows name of flick to be editable
+    toggleEditable(item, flick, ev) {
+        const nameField = item.querySelector('.flickName')
+        const btn = item.querySelector('.edit.button')
+
+        if (nameField.isContentEditable) {
+            //make it no longer editable
+            nameField.contentEditable = false
+
+            //changes the edit button
+            btn.textContent = 'edit'
+            btn.classList.remove('success')
+
+            //save changes
+            flick.name = nameField.textContent
+        } else {
+            //make it editable
+            nameField.contentEditable = true
+            nameField.focus()
+
+            //changes the edit button
+            btn.textContent = 'save'
+            btn.classList.add('success')
+        }
+    }
+
+    saveOnEnter(item, flick, ev) {
+        if (ev.key === 'Enter'){
+            debugger
+            this.toggleEditable(this, item, flick)
+        }
+    }
  
     //This function creates a new film list item
     renderListItem(flick) {
@@ -61,9 +96,12 @@ class App {
         //This give the new clone an id equal to the flick id
         item.dataset.id = flick.id
         //This puts the name value of flick into the text content of the new clone
-        item
-            .querySelector('.flickName')
-            .textContent = flick.name
+        const nameSpan = item.querySelector('.flickName')
+        nameSpan.textContent = flick.name
+        nameSpan.addEventListener(
+            'keypress',
+            this.saveOnEnter(this, item, flick)
+        )
 
         //This adds an event listener to the delete button on the new clone
         item
@@ -79,6 +117,14 @@ class App {
             .addEventListener(
                 'click',
                 this.favFlick.bind(this, item, flick)
+            )
+        
+        //Adds an event listener to edit button
+        item
+            .querySelector('.edit.button')
+            .addEventListener(
+                'click',
+                this.toggleEditable.bind(this, item, flick)
             )
 
         //This adds an event listener to the up button
