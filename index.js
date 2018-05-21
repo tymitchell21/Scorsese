@@ -18,16 +18,18 @@ const app = {
          })
     },
 
-    removeFlick(item, ev) {
-        //It removes it from the DOM and the films array
-        // const index = [...item.parentNode.childNodes].indexOf(item)
-        // item.parentNode.removeChild(item)
-        // this.films.splice(index,1)
-
+    removeFlick(item, flick, ev) {
+        //It removes it from the DOM
         item.remove()
+        
+        //Removes it from the films array
+        const i = this.films.indexOf(flick)
+        this.films.splice(i, 1)
 
         //This makes sure that as a list item is deleted, the new bottom item's down button is disabled
-        this.list.lastElementChild.querySelector('.down').disabled = true
+        if(this.films.length > 0) {
+            this.list.lastElementChild.querySelector('.down').disabled = true
+        }
     },
  
     //This function creates a new film list item
@@ -49,7 +51,8 @@ const app = {
             .querySelector('.del.button')
             .addEventListener(
                 'click',
-                this.removeFlick.bind(this, item)) //=> {
+                this.removeFlick.bind(this, item, flick)
+            ) //=> {
             // //It removes it from the DOM and the films array
             // const index = [...item.parentNode.childNodes].indexOf(item)
             // item.parentNode.removeChild(item)
